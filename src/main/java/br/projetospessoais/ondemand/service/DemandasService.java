@@ -4,11 +4,11 @@ import br.projetospessoais.ondemand.dto.DemandasDto;
 import br.projetospessoais.ondemand.model.Demandas;
 import br.projetospessoais.ondemand.repository.DemandasRepository;
 
-public class DemandaService {
+public class DemandasService {
 
    private final DemandasRepository demandasRepository;
 
-   public DemandaService(DemandasRepository demandasRepository) {
+   public DemandasService(DemandasRepository demandasRepository) {
        this.demandasRepository = demandasRepository;
    }
 
@@ -16,8 +16,8 @@ public class DemandaService {
 
        Demandas demandas = new Demandas();
 
-       demandas.setTipoDemanda(dto.getTipoDemanda());
-       demandas.setDescricaoDemanda(dto.getDescricao());
+       demandas.setTipo(dto.getTipoDemanda());
+       demandas.setDescricao(dto.getDescricao());
 
        return demandasRepository.save(demandas);
    }
