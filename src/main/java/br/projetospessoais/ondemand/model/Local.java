@@ -21,6 +21,6 @@ public class Local {
     private double latitude;
     private double longitude;
     private String endereco;
-    private Boolean ativo_local;
+    private Boolean ativo;
 
 }
