@@ -27,5 +27,30 @@ public class UsuarioService {
         return repository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
     }
+
+    public boolean validarLogin(String email, String senha) {
+
+        Usuario usuario = repository.findByEmail(email);
+
+        // ❌ não encontrou usuário
+        if (usuario == null) {
+            return false;
+        }
+
+        // ❌ usuário inativo
+        if (usuario.getAtivo() == null || !usuario.getAtivo()) {
+            return false;
+        }
+
+        // ❌ senha não cadastrada (usuários antigos)
+        if (usuario.getSenha() == null) {
+            return false;
+        }
+
+        // ✔ validação final
+        return usuario.getSenha().equals(senha);
+    }
+
+
 }
 

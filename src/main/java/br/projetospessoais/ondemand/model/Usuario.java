@@ -1,16 +1,12 @@
 package br.projetospessoais.ondemand.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
-
 public class Usuario {
 
     @Id
@@ -18,8 +14,18 @@ public class Usuario {
     private Long id;
 
     private String nome;
-    private String atribuicao;
     private String email;
+
+    @Enumerated(EnumType.STRING)
+    private Atribuicao atribuicao;
+
     private String telefone;
-    private Boolean ativo;
+    private Boolean ativo = true;
+    private String senha;
+
+    public enum Atribuicao {
+        SOLICITANTE,
+        EXECUTOR,
+        ADMINISTRADOR
+    }
 }
