@@ -1,6 +1,5 @@
 package br.projetospessoais.ondemand.dto;
 
-import br.projetospessoais.ondemand.model.TipoDemandas;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import lombok.Getter;
@@ -8,15 +7,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class DemandasDto {
-
-    @NotNull
-    private Long tipoDemandaId;
-
-    @NotNull
-    private Long localId;
+public class TipoDto {
 
     @NotBlank
-    private String descricao;
+    private String tipoDemandaDescricao;
 
+    @NotNull
+    private Boolean ativo;
 }

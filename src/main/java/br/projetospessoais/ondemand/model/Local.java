@@ -16,7 +16,8 @@ public class Local {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome_local;
+
+    private String nomeLocal;
     private double latitude;
     private double longitude;
     private String endereco;

@@ -17,6 +17,7 @@ public class TipoDemandas {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String tipoDemanda;
     private Boolean ativo;
 }
