@@ -14,6 +14,10 @@ public class Veiculo {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+
+    @Column(name = "marca_veiculo", nullable = false)
+    private String marcaVeiculo;
+
     @Column(name = "modelo_veiculo", nullable = false)
     private String modeloVeiculo;
 
@@ -27,8 +31,10 @@ public class Veiculo {
     private Integer kmAtual;
 
     @Column(name = "status_veiculo", nullable = false)
-    private String statusVeiculo;
+    private Boolean statusVeiculo = true;
 
     @Column(name = "quantidade_lugares", nullable = false)
     private Integer quantidadeLugares;
+
+
 }

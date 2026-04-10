@@ -1,5 +1,6 @@
 package br.projetospessoais.ondemand.service;
 
+import br.projetospessoais.ondemand.dto.UsuarioDto;
 import br.projetospessoais.ondemand.model.Usuario;
 import br.projetospessoais.ondemand.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
@@ -15,7 +16,16 @@ public class UsuarioService {
         this.repository = repository;
     }
 
-    public Usuario criar(Usuario usuario) {
+    public Usuario criar(UsuarioDto dto) {
+        Usuario usuario = new Usuario();
+
+        usuario.setNome(dto.getNome().trim());
+        usuario.setEmail(dto.getEmail().trim());
+        usuario.setTelefone(dto.getTelefone().trim());
+        usuario.setAtribuicao(dto.getAtribuicao());
+        usuario.setAtivo(true);
+        usuario.setSenha("123");
+
         return repository.save(usuario);
     }
 
@@ -29,28 +39,20 @@ public class UsuarioService {
     }
 
     public boolean validarLogin(String email, String senha) {
-
         Usuario usuario = repository.findByEmail(email);
 
-        // ❌ não encontrou usuário
         if (usuario == null) {
             return false;
         }
 
-        // ❌ usuário inativo
         if (usuario.getAtivo() == null || !usuario.getAtivo()) {
             return false;
         }
 
-        // ❌ senha não cadastrada (usuários antigos)
         if (usuario.getSenha() == null) {
             return false;
         }
 
-        // ✔ validação final
         return usuario.getSenha().equals(senha);
     }
-
-
 }
-
